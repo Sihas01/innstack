@@ -23,13 +23,13 @@ npm start
 
 `npm start` serves `out/`. The static build contains every generated detail route and a custom 404 page. Never deploy `.next/` for this project.
 
-## Deploy to Cloudflare Pages
+## Deploy to Cloudflare
 
-1. Push this repository to your Git provider and create a Cloudflare Pages project.
-2. Choose the Next.js Static HTML Export preset or configure build command `npm run build`, output directory `out`, and Node version `22`.
+1. Push this repository to your Git provider and create a Cloudflare Workers Builds project.
+2. Configure build command `npm run build`, deploy command `npx wrangler deploy`, repository path `/`, and Node version `22` or newer.
 3. Set `NEXT_PUBLIC_SITE_URL` to the actual Pages origin, for example `https://your-project.pages.dev`, with no trailing slash. The checked-in fallback is an example, not a claimed deployment.
 4. Set `NEXT_PUBLIC_CONTACT_EMAIL` to your selected contact address. The contact page labels it as a placeholder until you update that status.
-5. Deploy. No Worker, Pages Functions, database, or Next.js server is required.
+5. Deploy. `wrangler.jsonc` publishes the generated `out` directory as static assets. No Worker script, database, or Next.js server is required.
 
 For a custom domain, add it in Cloudflare Pages, change `NEXT_PUBLIC_SITE_URL` to its HTTPS origin, and rebuild. Canonicals, social metadata, publisher schema, robots and sitemap derive from this value. Preview branch builds should be access-controlled or marked noindex in your hosting configuration to avoid indexing duplicate origins.
 
