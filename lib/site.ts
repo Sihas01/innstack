@@ -1,0 +1,3 @@
+import type { Metadata } from 'next';
+export const site = { name: 'InnStack', url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://innstack.pages.dev').replace(/\/$/,''), email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@innstack.com', description: 'Independent guides to the technology behind modern hospitality.' };
+export function metadata(title: string, description: string, path: string): Metadata { return { title, description, alternates: { canonical: path }, openGraph: { title: `${title} | InnStack`, description, url: path, type: 'website' }, twitter: { card: 'summary', title, description } }; }
