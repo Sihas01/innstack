@@ -3,7 +3,7 @@ title: "How to Prevent Double Bookings Between Airbnb and Booking.com"
 description: "Listing the same rooms on Airbnb and Booking.com? Learn why double bookings happen, how calendar syncing works, and when a channel manager is worth using."
 slug: prevent-double-bookings-airbnb-booking-com
 category: Distribution
-author: Sihas Senevirathne
+author: InnStack Editorial Team
 publishedAt: '2026-09-26'
 updatedAt: '2026-09-26'
 readingTime: 12

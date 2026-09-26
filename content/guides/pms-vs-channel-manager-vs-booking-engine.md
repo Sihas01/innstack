@@ -3,7 +3,7 @@ title: "PMS vs Channel Manager vs Booking Engine: What Does a Small Property Act
 description: "PMS, channel manager, or booking engine? Learn what each system does, how they work together, and what a small hotel, villa, or guesthouse actually needs."
 slug: pms-vs-channel-manager-vs-booking-engine
 category: Software fundamentals
-author: Sihas Senevirathne
+author: InnStack Editorial Team
 publishedAt: '2026-09-26'
 updatedAt: '2026-09-26'
 readingTime: 12
