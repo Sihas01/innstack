@@ -302,6 +302,8 @@ If one room sells on Booking.com, you want Airbnb's availability updated as quic
 
 Booking.com itself directs individual properties toward connectivity providers such as channel managers rather than offering individual properties direct API access.
 
+If you are selling the same rooms through Airbnb and Booking.com, read our guide to [preventing double bookings between Airbnb and Booking.com](/guides/prevent-double-bookings-airbnb-booking-com/) for a practical look at calendar syncing, source-of-truth inventory, and when a channel manager becomes useful.
+
 ### Likely requirement
 
 **PMS:** Useful  

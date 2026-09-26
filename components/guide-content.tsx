@@ -2,7 +2,7 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { slugify } from '@/data/software';
-import { InnStackTip, PropertyExample } from '@/components/ui';
+import { Callout, InnStackTip, PropertyExample } from '@/components/ui';
 
 interface GuideContentProps { content: string; }
 
@@ -19,11 +19,11 @@ function Markdown({ children }: { children: string }) {
 
 export function GuideContent({ content }: GuideContentProps) {
   const renderStandardSections = (section: string, keyPrefix: string) =>
-    section.split(/(?=^### InnStack tip\s*$)/gm).map((part, index) => {
-      if (/^### InnStack tip\s*$/m.test(part)) {
+    section.split(/(?=^### InnStack (?:tip|view)\s*$)/gim).map((part, index) => {
+      if (/^### InnStack (?:tip|view)\s*$/im.test(part)) {
         return (
           <InnStackTip key={`${keyPrefix}-tip-${index}`}>
-            <Markdown>{part.replace(/^### InnStack tip\s*\n+/m, '')}</Markdown>
+            <Markdown>{part.replace(/^### InnStack (?:tip|view)\s*\n+/im, '')}</Markdown>
           </InnStackTip>
         );
       }
@@ -34,13 +34,22 @@ export function GuideContent({ content }: GuideContentProps) {
   return (
     <>
       {content.split(/(?=^## )/gm).flatMap((section, index) => {
-        const scenario = section.match(/^## (Scenario \d+: [^\n]+)\n+([\s\S]*)$/);
+        const scenario = section.match(/^## ((?:Scenario \d+:|A practical example:) [^\n]+)\n+([\s\S]*)$/);
+        const rule = section.match(/^## (InnStack['’]s simple rule)\n+([\s\S]*)$/);
 
         if (scenario) {
           return [
             <PropertyExample key={`scenario-${index}`} title={scenario[1]}>
               <Markdown>{scenario[2]}</Markdown>
             </PropertyExample>,
+          ];
+        }
+
+        if (rule) {
+          return [
+            <Callout key={`rule-${index}`} title={rule[1]}>
+              <Markdown>{rule[2]}</Markdown>
+            </Callout>,
           ];
         }
 
