@@ -349,6 +349,8 @@ You may also need:
 - revenue management
 - integrations
 
+Reliable reservation, rate, and inventory data also supports performance reporting. InnStack’s [RevPAR calculator](/revpar-calculator/) explains how to measure revenue per available room using room revenue or ADR and occupancy.
+
 The PMS is no longer just a calendar.
 
 It becomes part of a larger operating system for the business.
