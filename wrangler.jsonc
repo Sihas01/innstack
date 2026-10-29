@@ -2,6 +2,10 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "innstack",
   "compatibility_date": "2026-09-21",
+  "keep_vars": true,
+  "secrets": {
+    "required": ["ADMIN_PASSWORD_HASH", "GITHUB_TOKEN"]
+  },
   "main": "worker/index.mjs",
   "assets": {
     "directory": "./out",
