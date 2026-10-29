@@ -1,6 +1,6 @@
 # InnStack
 
-A complete, static Next.js publication for independent hospitality operators. TypeScript, Tailwind CSS 4, Markdown content, no database, no authentication and no runtime backend.
+A statically generated Next.js publication for independent hospitality operators, with InnStack Studio as a private Cloudflare Worker-backed publishing layer. Public guides remain Git-backed Markdown; Studio uses D1 for sessions and drafts and R2 for durable images.
 
 ## Run locally
 
@@ -29,13 +29,16 @@ npm start
 2. Configure build command `npm run build`, deploy command `npx wrangler deploy`, repository path `/`, and Node version `22` or newer.
 3. Set `NEXT_PUBLIC_SITE_URL` to the actual Pages origin, for example `https://your-project.pages.dev`, with no trailing slash. The checked-in fallback is an example, not a claimed deployment.
 4. Set `NEXT_PUBLIC_CONTACT_EMAIL` to your selected contact address. The contact page labels it as a placeholder until you update that status.
-5. Deploy. `wrangler.jsonc` publishes the generated `out` directory as static assets. No Worker script, database, or Next.js server is required.
+5. Configure InnStack Studio's D1/R2 bindings and secrets using [the Studio setup guide](docs/innstack-studio.md).
+6. Deploy. `wrangler.jsonc` publishes the generated `out` directory as static assets behind the small Studio Worker. No Next.js server is required.
 
 For a custom domain, add it in Cloudflare Pages, change `NEXT_PUBLIC_SITE_URL` to its HTTPS origin, and rebuild. Canonicals, social metadata, publisher schema, robots and sitemap derive from this value. Preview branch builds should be access-controlled or marked noindex in your hosting configuration to avoid indexing duplicate origins.
 
 `public/_headers` supplies baseline security headers. The output uses directory index pages and trailing slashes; Cloudflare serves these directly. No SPA fallback rule is needed.
 
 ## Publishing content
+
+The normal publishing path is now `/admin/`. Studio saves drafts to D1, stores uploaded images in R2, and commits validated Markdown to this repository. The existing Cloudflare Git deployment then rebuilds the public site. Manual Markdown commits remain supported.
 
 - Guides live in `content/guides/*.md` and are rendered at build time with `react-markdown` and GFM support. Raw HTML is not enabled. Frontmatter supplies title, description, slug, category, author, publication/update dates, reading time, optional image, featured status, tags, affiliate status and software mentions. Add a Markdown file and rebuild to add a route and search entry.
 - Software profiles live in `data/software.ts`, with typed metadata for official and affiliate URLs, pricing, property fit, testing status and comparisons. Current profiles are explicitly sample content. Their sections are evaluation prompts, not factual vendor findings.

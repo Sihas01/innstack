@@ -2,9 +2,18 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "innstack",
   "compatibility_date": "2026-09-21",
+  "main": "worker/index.mjs",
   "assets": {
     "directory": "./out",
+    "binding": "ASSETS",
+    "run_worker_first": true,
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
+  },
+  "vars": {
+    "PUBLIC_SITE_URL": "https://innstack.online",
+    "GITHUB_REPOSITORY": "Sihas01/innstack",
+    "GITHUB_BRANCH": "main",
+    "ENVIRONMENT": "production"
   }
 }
