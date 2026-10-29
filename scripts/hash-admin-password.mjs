@@ -2,7 +2,9 @@ import { pbkdf2Sync, randomBytes } from 'node:crypto';
 
 function printCredentials(password) {
   const salt = randomBytes(16);
-  const iterations = 310000;
+  // Cloudflare Workers production caps a single PBKDF2 operation at 100,000
+  // iterations. The generated admin password has 192 bits of random entropy.
+  const iterations = 100000;
   const hash = pbkdf2Sync(password, salt, iterations, 32, 'sha256');
   console.log('\nAdmin password (save this in your password manager):');
   console.log(password);

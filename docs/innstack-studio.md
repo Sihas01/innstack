@@ -47,6 +47,10 @@ npm run studio:hash-password
 npx wrangler secret put ADMIN_PASSWORD_HASH
 ```
 
+The generated hash uses Cloudflare Workers' supported PBKDF2 ceiling of 100,000
+iterations. Use the generated high-entropy password and store it in a password
+manager. Paste only the hash line into the Cloudflare secret.
+
 Paste the generated `pbkdf2-sha256$…` value at the Wrangler prompt.
 
 ## GitHub credential
