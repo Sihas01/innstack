@@ -1,5 +1,21 @@
 import { pbkdf2Sync, randomBytes } from 'node:crypto';
 
+function printCredentials(password) {
+  const salt = randomBytes(16);
+  const iterations = 310000;
+  const hash = pbkdf2Sync(password, salt, iterations, 32, 'sha256');
+  console.log('\nAdmin password (save this in your password manager):');
+  console.log(password);
+  console.log('\nADMIN_PASSWORD_HASH (paste this into the Cloudflare secret):');
+  console.log(`pbkdf2-sha256$${iterations}$${salt.toString('base64')}$${hash.toString('base64')}`);
+}
+
+if (process.argv.includes('--generate')) {
+  const password = randomBytes(24).toString('base64url');
+  printCredentials(password);
+  process.exit(0);
+}
+
 if (!process.stdin.isTTY) {
   console.error('Run this command in an interactive terminal.');
   process.exit(1);
@@ -21,11 +37,7 @@ process.stdin.on('data', (key) => {
       process.exitCode = 1;
       return;
     }
-    const salt = randomBytes(16);
-    const iterations = 310000;
-    const hash = pbkdf2Sync(password, salt, iterations, 32, 'sha256');
-    console.log(`pbkdf2-sha256$${iterations}$${salt.toString('base64')}$${hash.toString('base64')}`);
-    console.log('Copy this hash into: npx wrangler secret put ADMIN_PASSWORD_HASH');
+    printCredentials(password);
     return;
   }
   if (key === '\u007f' || key === '\b') { password = password.slice(0, -1); return; }

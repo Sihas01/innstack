@@ -10,6 +10,20 @@
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   },
+  "d1_databases": [
+    {
+      "binding": "STUDIO_DB",
+      "database_name": "innstack-studio",
+      "database_id": "2532a43d-2057-4068-984b-9ba451548a3b",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "STUDIO_MEDIA",
+      "bucket_name": "innstack-studio-media"
+    }
+  ],
   "vars": {
     "PUBLIC_SITE_URL": "https://innstack.online",
     "GITHUB_REPOSITORY": "Sihas01/innstack",
