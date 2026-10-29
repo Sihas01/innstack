@@ -163,19 +163,38 @@ async function login(request, env) {
   const forwarded = request.headers.get('cf-connecting-ip') || 'unknown';
   const key = await sha256(forwarded);
   const now = Date.now();
-  const attempt = await env.STUDIO_DB.prepare('SELECT attempts, window_started_at FROM login_attempts WHERE key = ?').bind(key).first();
+  let attempt;
+  try {
+    attempt = await env.STUDIO_DB.prepare('SELECT attempts, window_started_at FROM login_attempts WHERE key = ?').bind(key).first();
+  } catch {
+    throw Object.assign(new Error('Login database check failed. [LOGIN-DB-READ]'), { publicMessage: 'Login database check failed. [LOGIN-DB-READ]' });
+  }
   if (attempt && now - Date.parse(attempt.window_started_at) < 15 * 60 * 1000 && attempt.attempts >= 8) return json({ error: 'Too many sign-in attempts. Try again later.' }, 429);
   const body = await readBody(request);
-  if (!(await verifyPassword(String(body.password || ''), env.ADMIN_PASSWORD_HASH))) {
-    if (!attempt || now - Date.parse(attempt.window_started_at) >= 15 * 60 * 1000) await env.STUDIO_DB.prepare('INSERT INTO login_attempts (key, attempts, window_started_at) VALUES (?, 1, ?) ON CONFLICT(key) DO UPDATE SET attempts = 1, window_started_at = excluded.window_started_at').bind(key, new Date(now).toISOString()).run();
-    else await env.STUDIO_DB.prepare('UPDATE login_attempts SET attempts = attempts + 1 WHERE key = ?').bind(key).run();
+  let passwordMatches;
+  try {
+    passwordMatches = await verifyPassword(String(body.password || ''), env.ADMIN_PASSWORD_HASH);
+  } catch {
+    throw Object.assign(new Error('Password verification failed. [LOGIN-AUTH]'), { publicMessage: 'Password verification failed. [LOGIN-AUTH]' });
+  }
+  if (!passwordMatches) {
+    try {
+      if (!attempt || now - Date.parse(attempt.window_started_at) >= 15 * 60 * 1000) await env.STUDIO_DB.prepare('INSERT INTO login_attempts (key, attempts, window_started_at) VALUES (?, 1, ?) ON CONFLICT(key) DO UPDATE SET attempts = 1, window_started_at = excluded.window_started_at').bind(key, new Date(now).toISOString()).run();
+      else await env.STUDIO_DB.prepare('UPDATE login_attempts SET attempts = attempts + 1 WHERE key = ?').bind(key).run();
+    } catch {
+      throw Object.assign(new Error('Login attempt could not be recorded. [LOGIN-DB-WRITE]'), { publicMessage: 'Login attempt could not be recorded. [LOGIN-DB-WRITE]' });
+    }
     return json({ error: 'Incorrect password.' }, 401);
   }
-  await env.STUDIO_DB.prepare('DELETE FROM login_attempts WHERE key = ?').bind(key).run();
   const token = bytesToBase64(crypto.getRandomValues(new Uint8Array(32))).replace(/[+/=]/g, '');
   const csrf = bytesToBase64(crypto.getRandomValues(new Uint8Array(24))).replace(/[+/=]/g, '');
   const expires = new Date(now + SESSION_DAYS * 86400 * 1000).toISOString();
-  await env.STUDIO_DB.prepare('INSERT INTO sessions (token_hash, csrf_token, expires_at, created_at) VALUES (?, ?, ?, ?)').bind(await sha256(token), csrf, expires, new Date(now).toISOString()).run();
+  try {
+    await env.STUDIO_DB.prepare('DELETE FROM login_attempts WHERE key = ?').bind(key).run();
+    await env.STUDIO_DB.prepare('INSERT INTO sessions (token_hash, csrf_token, expires_at, created_at) VALUES (?, ?, ?, ?)').bind(await sha256(token), csrf, expires, new Date(now).toISOString()).run();
+  } catch {
+    throw Object.assign(new Error('Login session could not be created. [LOGIN-SESSION]'), { publicMessage: 'Login session could not be created. [LOGIN-SESSION]' });
+  }
   return json({ ok: true }, 200, { 'set-cookie': sessionCookie(token) });
 }
 
@@ -358,7 +377,8 @@ const worker = {
     } catch (error) {
       console.error(error);
       const status = Number(error.status) || 500;
-      return securityHeaders(json({ error: status >= 500 ? 'InnStack Studio could not complete that operation.' : error.message, detail: env.ENVIRONMENT === 'development' ? error.message : undefined }, status));
+      const publicMessage = error.publicMessage || 'InnStack Studio could not complete that operation.';
+      return securityHeaders(json({ error: status >= 500 ? publicMessage : error.message, detail: env.ENVIRONMENT === 'development' ? error.message : undefined }, status));
     }
   },
 };
