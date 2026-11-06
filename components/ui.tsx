@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { slugify, type Software } from '@/data/software';
-export function Logo() { return <span className="logo"><svg width="27" height="33" viewBox="0 0 32 38" aria-hidden="true"><path d="M3 35V17a13 13 0 0 1 26 0v18M10 35V17a6 6 0 0 1 12 0v18M0 35h32" fill="none" stroke="currentColor" strokeWidth="2"/></svg>InnStack<span className="logo-dot">.</span></span>; }
+export function Logo() { return <span className="logo" style={{position:'relative',display:'inline-block',width:160,height:38,overflow:'hidden',flexShrink:0}}><Image src="/InnStack Layered Green Logo.png" alt="InnStack" width={204} height={68} priority style={{position:'absolute',maxWidth:'none',left:-23,top:-15}}/></span>; }
 export function Arrow({ diagonal=false }: { diagonal?: boolean }) { return <span aria-hidden="true">{diagonal?'↗':'→'}</span>; }
 export function SectionTitle({number,title,href,label='Explore all'}:{number:string;title:string;href?:string;label?:string}) { return <div className="section-heading"><div><span className="eyebrow muted">{number} / THE INNSTACK FIELD GUIDE</span><h2>{title}</h2></div>{href&&<Link className="text-link" href={href}>{label} <Arrow/></Link>}</div>; }
 export function PageIntro({eyebrow,title,children}:{eyebrow:string;title:string;children:ReactNode}) {return <header className="page-intro"><span className="eyebrow">{eyebrow}</span><h1>{title}</h1><div className="deck">{children}</div></header>;}
