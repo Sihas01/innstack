@@ -1,15 +1,15 @@
 export const categories = [
- ['pms','Property Management Systems','Reservations, rooms and everyday operations.','▦'],
- ['channel-managers','Channel Managers','Keep your availability in sync, everywhere.','⇄'],
- ['booking-engines','Booking Engines','Turn website visitors into direct guests.','⌘'],
- ['guest-messaging','Guest Messaging','Better conversations. Less repetition.','☏'],
- ['revenue-management','Revenue Management','Bring more clarity to your room rates.','↗'],
- ['housekeeping','Housekeeping','Keep rooms and teams ready for arrival.','✧'],
- ['direct-booking','Direct Booking','Build a guest relationship of your own.','⌂'],
- ['payments','Payments','Make getting paid part of a smooth stay.','▤'],
- ['crm','CRM','Keep useful guest context in one place.','◎'],
- ['website-builders','Website Builders','Give your property a welcoming home online.','▧'],
- ['marketing','Marketing Tools','Help the right guests discover your property.','◈'],
+ ['pms','Property Management Systems','Reservations, rooms and everyday operations.'],
+ ['channel-managers','Channel Managers','Keep your availability in sync, everywhere.'],
+ ['booking-engines','Booking Engines','Turn website visitors into direct guests.'],
+ ['guest-messaging','Guest Messaging','Better conversations. Less repetition.'],
+ ['revenue-management','Revenue Management','Bring more clarity to your room rates.'],
+ ['housekeeping','Housekeeping','Keep rooms and teams ready for arrival.'],
+ ['direct-booking','Direct Booking','Build a guest relationship of your own.'],
+ ['payments','Payments','Make getting paid part of a smooth stay.'],
+ ['crm','CRM','Keep useful guest context in one place.'],
+ ['website-builders','Website Builders','Give your property a welcoming home online.'],
+ ['marketing','Marketing Tools','Help the right guests discover your property.'],
 ] as const;
 export const propertyTypes = ['Small Hotel','Boutique Hotel','Guesthouse','Villa','Vacation Rental','Property Manager'];
 export interface Software { slug: string; name: string; logo: string | null; description: string; website: string; startingPrice: string; freeTrial: string; bestFor: string; propertySize: string[]; propertyTypes: string[]; categories: string[]; affiliateLink: string | null; reviewUrl: string; comparisonUrls: string[]; tested: boolean; sample: boolean; }

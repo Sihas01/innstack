@@ -2,6 +2,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import {Plus} from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -213,7 +214,7 @@ export function AdminStudio() {
   return <div className="studio-shell">
     <aside className="studio-sidebar">
       <div className="studio-brand"><strong>InnStack<span>.</span></strong><small>STUDIO</small></div>
-      <button className="studio-new" onClick={createNew}>＋ New article</button>
+      <button className="studio-new" onClick={createNew}><Plus className="inline-icon" size="1em" strokeWidth={1.6} aria-hidden="true"/> New article</button>
       <input className="studio-search" value={filter} onChange={(event) => setFilter(event.target.value)} placeholder="Search articles" aria-label="Search articles" />
       <div className="studio-article-list" aria-label="Articles">
         {visibleItems.map((item) => <button key={item.id} className={id === item.id ? 'active' : ''} onClick={() => selectArticle(item)}>
