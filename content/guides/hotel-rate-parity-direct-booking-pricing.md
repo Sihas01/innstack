@@ -83,6 +83,8 @@ Direct bookings can avoid certain intermediary charges, but they still involve e
 
 The important metric is not simply the room price. It is how much revenue the property retains after acquiring the booking.
 
+Use the [OTA Commission Calculator](/tools/ota-commission-calculator/) to estimate commission costs, and the [Direct Booking Savings Calculator](/tools/direct-booking-savings-calculator/) to explore a shift in booking mix. Both are simplified estimates, not profit calculations.
+
 ### Example: OTA vs Direct Booking
 
 Consider a hypothetical hotel selling a room for $100.
