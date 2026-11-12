@@ -82,6 +82,10 @@ Change these only if the production domain, repository, or deployment branch cha
 
 ## Deploy
 
+### HTTPS redirect (Cloudflare dashboard)
+
+In the Cloudflare dashboard, select the `innstack.online` zone, ensure the **SSL/TLS** encryption mode is not **Off**, then open **SSL/TLS → Edge Certificates** and enable **Always Use HTTPS**. This zone-wide setting redirects HTTP requests to HTTPS, including for other proxied hosts in the zone, so confirm those hosts support HTTPS first. Keep the existing HTTPS canonical URLs; do not add a second Worker redirect. After enabling it, check the 301 destination, path and query string on representative URLs, and check existing redirect rules for unnecessary chains or loops. A slashless URL may still need a separate trailing-slash redirect. This zone setting is not managed by `wrangler.jsonc` and requires dashboard access.
+
 The Cloudflare Workers Builds project should use:
 
 - Build command: `npm run build`

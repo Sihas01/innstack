@@ -26,6 +26,36 @@ function makeSlug(value: string) {
   return value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 100);
 }
 
+function publishingWarnings(article: Article): string[] {
+  const warnings: string[] = [];
+  const body = article.body.replace(/```[^\n]*\n[\s\S]*?(?:```|$)|~~~[^\n]*\n[\s\S]*?(?:~~~|$)/g, '');
+  if (body.trim().split(/\s+/).filter(Boolean).length >= 300 && !/^##\s+\S/m.test(body)) {
+    warnings.push('This long article has no Markdown H2 headings. Add section headings like "## Heading" so readers and the table of contents can navigate it.');
+  }
+  const lines = body.split(/\r?\n/);
+  const tabular = (line: string) => /^\S[^\n]*\t[^\n]*\S/.test(line);
+  const pipeRow = (line: string) => line.includes('|') && line.split('|').filter((cell) => cell.trim()).length >= 2;
+  const separator = (line: string) => /^\s*\|?\s*:?-{3,}:?\s*(?:\|\s*:?-{3,}:?\s*)+\|?\s*$/.test(line);
+  const hasMalformedPipes = body.split(/\r?\n\s*\r?\n/).some((block) => {
+    const rows = block.split(/\r?\n/).filter(pipeRow);
+    return rows.length >= 2 && !rows.some(separator);
+  });
+  if (lines.some((line, index) => tabular(line) && tabular(lines[index + 1] || '')) || hasMalformedPipes) {
+    warnings.push('Possible pasted table without Markdown formatting. Check the preview and use a header, separator row and pipe-delimited cells.');
+  }
+  const invalid: string[] = [];
+  if (article.title.trim().length < 8 || article.title.trim().length > 160) invalid.push('title');
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(article.slug.trim()) || article.slug.trim().length > 100) invalid.push('slug');
+  if (article.excerpt.trim().length < 40 || article.excerpt.trim().length > 320) invalid.push('excerpt');
+  if (!article.category.trim() || article.category.trim().length > 80) invalid.push('category');
+  if (article.metaTitle.trim().length > 70) invalid.push('meta title');
+  if (article.metaDescription.trim().length > 180) invalid.push('meta description');
+  if (article.publicationDate && Number.isNaN(Date.parse(`${article.publicationDate}T00:00:00Z`))) invalid.push('publication date');
+  if (article.featuredImage && !article.featuredImageAlt.trim()) invalid.push('featured image alt text');
+  if (invalid.length) warnings.push(`Review invalid or missing metadata: ${invalid.join(', ')}. Required fields must pass the existing server validation; blank meta title and description use the article title and excerpt.`);
+  return warnings;
+}
+
 function parseStructuredPaste(value: string): Partial<Article> {
   const text = value.replace(/\r/g, '').trim();
   const result: Partial<Article> = {};
@@ -151,6 +181,8 @@ export function AdminStudio() {
   };
 
   const publish = async () => {
+    const warnings = publishingWarnings(article);
+    if (warnings.length && !window.confirm(`Before publishing, please review:\n\n${warnings.map((warning) => `• ${warning}`).join('\n\n')}\n\nContinue publishing?`)) return;
     setWorking('publish'); setMessage('');
     try {
       const saved = await save(true);
