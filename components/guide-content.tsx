@@ -47,7 +47,7 @@ export function GuideContent({ content }: GuideContentProps) {
 
         if (rule) {
           return [
-            <Callout key={`rule-${index}`} title={rule[1]}>
+            <Callout key={`rule-${index}`} title={rule[1]} id={slugify(rule[1])}>
               <Markdown>{rule[2]}</Markdown>
             </Callout>,
           ];

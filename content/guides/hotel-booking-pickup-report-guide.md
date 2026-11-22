@@ -148,6 +148,8 @@ First check whether:
 - Cancellation activity has increased.
 - Your direct-booking website works correctly.
 
+Separate new demand from lost reservations with the [cancellation-rate report by channel](/guides/hotel-cancellation-rate-by-booking-channel/). Strong gross bookings can still produce weak net pickup when cancellations rise.
+
 If demand remains weak, consider a targeted offer rather than discounting every date.
 
 ### Monitor Revenue, Not Just Room Nights
@@ -166,7 +168,7 @@ A small property can begin with weekly reviews. Daily monitoring may be more use
 
 ### Is booking pickup the same as booking lead time?
 
-No. Booking lead time measures the time between reservation creation and arrival. Pickup measures how reservations change between reporting snapshots.
+No. Booking lead time measures the time between reservation creation and arrival. Pickup measures how reservations change between reporting snapshots. The [booking lead-time guide](/guides/hotel-booking-lead-time-guide/) explains how to compare booking windows before deciding that pickup is unusually slow.
 
 ### Can a small guesthouse use Excel for pickup reports?
 

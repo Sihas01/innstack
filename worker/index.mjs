@@ -374,7 +374,7 @@ const worker = {
       if (!isAdminApi && !isAdminPage) return securityHeaders(await env.ASSETS.fetch(request));
       const session = await getSession(request, env);
       if (isAdminApi) return securityHeaders(await api(request, env, url, session));
-      if (!session) return securityHeaders(new Response(loginPage(url.searchParams.get('error') || ''), { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } }));
+      if (!session) return securityHeaders(new Response(loginPage(url.searchParams.get('error') || ''), { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex, nofollow, noarchive' } }));
       return securityHeaders(await env.ASSETS.fetch(request));
     } catch (error) {
       console.error(error);

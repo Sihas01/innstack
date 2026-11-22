@@ -146,6 +146,8 @@ Software cannot synchronize inventory properly if the wrong rooms are connected.
 
 If these represent the same physical inventory but are mapped incorrectly, software may not understand that selling one needs to reduce the others. Verify the mapping between physical rooms or units, PMS room types, Airbnb listings, and Booking.com room types. Do not assume setup is correct simply because platforms show “Connected.”
 
+Follow the [room and rate-plan mapping guide](/guides/hotel-room-mapping-channel-manager-guide/) when checking how each listing draws from shared inventory.
+
 ## Test your synchronization before trusting it
 
 Before relying on any calendar or channel-manager connection, choose a future date with no real bookings. Block that date in your main system, confirm whether it becomes unavailable on Airbnb and Booking.com, then reopen it.
@@ -190,7 +192,7 @@ Actual capabilities vary by provider and connection type. Always verify how a sp
 
 ### One or two vacation-rental units
 
-Start simple. If booking volume is manageable, two-way calendar synchronization may be enough initially. Monitor it carefully and understand its refresh limitations.
+Start simple. If booking volume is manageable, two-way calendar synchronization may be enough initially. Monitor it carefully and understand its refresh limitations. The [vacation-rental software playbook](/property-types/vacation-rental/) also covers guest messages, turnover tasks and payments.
 
 ### Small guesthouse using Airbnb + Booking.com
 
@@ -198,7 +200,7 @@ Two-way calendar sync is considerably better than manual updates. But if you rec
 
 ### Small hotel using several OTAs
 
-A central PMS/channel-management setup is usually easier to justify. The goal is one reliable inventory while several channels sell from it.
+A central PMS/channel-management setup is usually easier to justify. The goal is one reliable inventory while several channels sell from it. Use the [small-hotel software playbook](/property-types/small-hotel/) to connect reservation workflows with housekeeping and arrivals.
 
 ### Multi-property operator
 

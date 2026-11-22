@@ -98,6 +98,8 @@ Record how many days before arrival each cancellation occurred.
 
 A cancellation 30 days before arrival gives your property more opportunity to resell the room than one received on the arrival date.
 
+Use a [booking pickup report](/guides/hotel-booking-pickup-report-guide/) to see whether new room nights replace cancellations for those future stay dates. Keep the snapshot dates and stay dates consistent.
+
 ### Step 5: Compare Revenue Impact
 
 Reservation counts alone don't show the full financial impact.

@@ -1,5 +1,6 @@
 ---
 title: "PMS vs Channel Manager vs Booking Engine: What Does a Small Property Actually Need?"
+metaTitle: "PMS vs Channel Manager vs Booking Engine"
 description: "PMS, channel manager, or booking engine? Learn what each system does, how they work together, and what a small hotel, villa, or guesthouse actually needs."
 slug: pms-vs-channel-manager-vs-booking-engine
 category: Software fundamentals
@@ -274,7 +275,7 @@ The better way to decide is to look at **how you sell and operate your inventory
 
 You may not need a sophisticated hospitality stack.
 
-If Airbnb handles almost every reservation and you have very simple operations, you might initially manage without a separate channel manager or booking engine.
+If Airbnb handles almost every reservation and you have very simple operations, you might initially manage without a separate channel manager or booking engine. Use the [villa software playbook](/property-types/villa/) to prioritize unit availability, deposits and cleaning handoffs.
 
 A lightweight PMS could still become useful for:
 
@@ -310,7 +311,7 @@ If you are selling the same rooms through Airbnb and Booking.com, read our guide
 **Channel manager:** Strongly worth considering  
 **Booking engine:** Optional until you actively pursue direct bookings
 
-For a property like this, an affordable **all-in-one PMS with built-in channel management** may be simpler than purchasing separate systems.
+For a property like this, an affordable **all-in-one PMS with built-in channel management** may be simpler than purchasing separate systems. The [guesthouse software playbook](/property-types/guesthouse/) provides a short set of demo priorities for a small team.
 
 ## Scenario 3: A ten-room boutique hotel selling through OTAs and its own website
 
@@ -332,7 +333,7 @@ But again, this does not mean three subscriptions.
 
 Several modern hospitality platforms bundle these capabilities. For example, [Little Hotelier](https://www.littlehotelier.com/) currently packages front-desk/PMS functions, channel management and a website booking engine together for small properties.
 
-The important question becomes whether the bundled tools are good enough for your workflow.
+The important question becomes whether the bundled tools are good enough for your workflow. For a more personal guest experience, use the [boutique hotel software playbook](/property-types/boutique-hotel/) to evaluate guest context, special requests and direct booking.
 
 ## Scenario 4: A property manager operating 15 villas across Airbnb, Booking.com and direct bookings
 
@@ -351,7 +352,7 @@ You may also need:
 
 Reliable reservation, rate, and inventory data also supports performance reporting. InnStack’s [RevPAR calculator](/revpar-calculator/) explains how to measure revenue per available room using room revenue or ADR and occupancy.
 
-The PMS is no longer just a calendar.
+The PMS is no longer just a calendar. The [property manager software playbook](/property-types/property-manager/) focuses on permissions, multi-location reporting and handling exceptions.
 
 It becomes part of a larger operating system for the business.
 
@@ -425,6 +426,8 @@ You need a smooth path from:
 That's the booking engine's role.
 
 Use the [OTA Commission Calculator](/tools/ota-commission-calculator/) to understand one part of the cost of OTA distribution. It is an estimate, not a complete direct-booking business case.
+
+Before publishing a lower website rate, review [rate parity and direct-booking pricing](/guides/hotel-rate-parity-direct-booking-pricing/). A booking engine enables the sale; it does not decide which pricing conditions apply to your property.
 
 ### 3. How complicated are your daily operations?
 

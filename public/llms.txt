@@ -1,0 +1,17 @@
+# InnStack
+
+> Guides and browser-based calculators for independent hospitality operators.
+
+## Guides
+- [All guides](https://innstack.online/guides/): Hotel operations, distribution and reporting.
+- [PMS vs channel manager vs booking engine](https://innstack.online/guides/pms-vs-channel-manager-vs-booking-engine/): Understand the three software roles.
+- [Rate parity and direct pricing](https://innstack.online/guides/hotel-rate-parity-direct-booking-pricing/): Pricing conditions, channel costs and illustrative examples.
+- [Prevent double bookings](https://innstack.online/guides/prevent-double-bookings-airbnb-booking-com/): Inventory synchronization and setup checks.
+
+## Calculators
+- [All calculators](https://innstack.online/tools/): OTA commission, direct-booking savings, occupancy, ADR and RevPAR.
+- [RevPAR calculator](https://innstack.online/revpar-calculator/): Formulas, worked examples and limitations.
+
+## About the publication
+- [Software categories](https://innstack.online/software/): Workflow-based evaluation questions; researched profiles are added when available.
+- [Methodology](https://innstack.online/methodology/): Editorial and evaluation approach.

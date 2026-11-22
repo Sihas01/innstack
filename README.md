@@ -27,12 +27,12 @@ npm start
 
 1. Push this repository to your Git provider and create a Cloudflare Workers Builds project.
 2. Configure build command `npm run build`, deploy command `npx wrangler deploy`, repository path `/`, and Node version `22` or newer.
-3. Set `NEXT_PUBLIC_SITE_URL` to the actual Pages origin, for example `https://your-project.pages.dev`, with no trailing slash. The checked-in fallback is an example, not a claimed deployment.
+3. Set the production build variable `NEXT_PUBLIC_SITE_URL` to `https://innstack.online`, with no trailing slash. Keep the Worker runtime variable `PUBLIC_SITE_URL` aligned with it; the runtime variable alone does not set build-time canonical URLs.
 4. Set `NEXT_PUBLIC_CONTACT_EMAIL` to your selected contact address. The contact page labels it as a placeholder until you update that status.
 5. Configure InnStack Studio's D1/R2 bindings and secrets using [the Studio setup guide](docs/innstack-studio.md).
 6. Deploy. `wrangler.jsonc` publishes the generated `out` directory as static assets behind the small Studio Worker. No Next.js server is required.
 
-For a custom domain, add it in Cloudflare Pages, change `NEXT_PUBLIC_SITE_URL` to its HTTPS origin, and rebuild. Canonicals, social metadata, publisher schema, robots and sitemap derive from this value. Preview branch builds should be access-controlled or marked noindex in your hosting configuration to avoid indexing duplicate origins.
+The repository deploys to Cloudflare Workers with static assets. Verify the custom-domain binding under the Worker's Settings → Domains & Routes; domain bindings and DNS records are not declared in `wrangler.jsonc`. Canonicals, social metadata, publisher schema, robots and sitemap derive from the build-time origin. Preview branch builds should be access-controlled or marked noindex in hosting configuration to avoid indexing duplicate origins.
 
 `public/_headers` supplies baseline security headers. The output uses directory index pages and trailing slashes; Cloudflare serves these directly. No SPA fallback rule is needed.
 

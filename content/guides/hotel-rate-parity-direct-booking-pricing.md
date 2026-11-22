@@ -5,7 +5,7 @@ slug: hotel-rate-parity-direct-booking-pricing
 category: "Distribution"
 author: InnStack Editorial Team
 publishedAt: '2026-11-12'
-updatedAt: '2026-11-12'
+updatedAt: '2026-11-22'
 readingTime: 6
 featuredImage: "/studio-media/2026-11-12/46e81fb2-ce0b-4b5b-a1d8-46286786806a.webp"
 featuredImageAlt: "booking engine"
@@ -51,11 +51,9 @@ In some markets, yes.
 
 An important development concerns Booking.com and the European Economic Area (EEA).
 
-Under the European Union's Digital Markets Act (DMA), Booking.com became subject to obligations restricting certain practices that prevent business users from offering different prices or conditions through other channels.
+The [European Commission's November 2024 announcement](https://digital-markets-act.ec.europa.eu/booking-must-comply-all-relevant-obligations-under-digital-markets-act-2024-11-14_en) states that Booking.com must comply with the Digital Markets Act (DMA) from November 14, 2024, including allowing relevant providers to offer better prices and conditions on other channels.
 
-These obligations have applied since November 14, 2024.
-
-This means accommodation providers covered by these rules can offer better prices or conditions through their own websites.
+The Commission's [September 2026 parity factsheet](https://digital-markets-act.ec.europa.eu/factsheet-how-dma-ensures-businesses-using-bookingcom-are-free-set-their-prices-and-bookingcom-2026-09-28_en) confirms that businesses active on Booking.com in the EEA can freely set prices and conditions on and off the platform, including their direct channel. It also explains that contractual parity requirements were removed in July 2024, before the DMA compliance deadline.
 
 However, these European requirements do not automatically apply worldwide.
 
@@ -66,6 +64,21 @@ Before introducing direct-booking discounts:
 - Review your current OTA agreements.
 - Check the rules applicable to your property.
 - Compare the full booking conditions, not just the advertised price.
+
+## Check Whether You Are Comparing the Same Offer
+
+Before changing a rate in response to an apparent mismatch, record the search time and compare:
+
+| Check | What to match |
+|---|---|
+| Stay and guests | Arrival, departure, number of rooms, adults and children |
+| Inventory | The same room type, occupancy limit and meal plan |
+| Booking conditions | Cancellation deadline, refundability and payment timing |
+| Total price | Taxes, mandatory fees and currency on the same basis |
+| Eligibility | Public, mobile-only, logged-in or member prices |
+| Discount funding | Whether the property or the platform pays for the offer |
+
+A cheaper OTA display does not necessarily mean your channel manager sent the wrong rate. Check the reservation's rate breakdown and expected payout before lowering your direct price. If room types or rate plans do not align, use the [hotel room-mapping guide](/guides/hotel-room-mapping-channel-manager-guide/) to investigate the configuration first.
 
 ## Why Direct Bookings Can Be More Profitable
 
@@ -105,6 +118,8 @@ Despite offering the guest a $5 discount, the hotel retains $2 more from the dir
 
 These figures are illustrative, not industry averages. Actual results depend on the hotel's acquisition and operating costs.
 
+Under these fixed-cost assumptions, the direct rate that matches the OTA's $85 retained revenue is **$85 + $3 + $5 = $93**. A direct rate below $93 retains less than the OTA example. Recalculate the threshold if processing fees vary with price, advertising costs change or benefits add a cost. This compares alternative bookings for the same stay; it does not prove that a discount creates new demand.
+
 ## Five Ways to Encourage Direct Bookings
 
 You don't necessarily need to offer cheaper room rates to attract direct reservations.
@@ -120,7 +135,7 @@ Depending on your agreements and applicable rules, consider:
 - Welcome drinks
 - Room upgrades subject to availability
 
-These benefits can make direct bookings more attractive without necessarily changing advertised room prices.
+These benefits can make direct bookings more attractive without necessarily changing advertised room prices. They still change the offer's conditions and have a cost, so do not treat them as an automatic workaround for a parity restriction.
 
 ### 2. Improve Your Booking Website
 
@@ -155,6 +170,8 @@ Track the performance of each booking channel.
 | Revenue after distribution costs | Measures retained revenue |
 
 A smaller number of profitable direct reservations can be more valuable than a larger number acquired through expensive marketing.
+
+Compare completed stays as well as initial reservations. Use the [channel cancellation-rate guide](/guides/hotel-cancellation-rate-by-booking-channel/) to avoid treating bookings that later cancel as realized revenue. Monitor a consistent stay period and record your discount, marketing spend and cost of included benefits.
 
 ## How a Channel Manager Helps
 
@@ -200,9 +217,9 @@ Use OTAs to reach new travellers while improving your direct-booking experience 
 
 ## Sources and Methodology
 
-- [European Commission – Booking.com must comply with Digital Markets Act obligations](https://digital-markets-act.ec.europa.eu/bookingcom-must-comply-all-relevant-obligations-under-digital-markets-act-2024-11-14_en)
+- [European Commission – Booking must comply with Digital Markets Act obligations (14 November 2024)](https://digital-markets-act.ec.europa.eu/booking-must-comply-all-relevant-obligations-under-digital-markets-act-2024-11-14_en)
+- [European Commission – Booking.com parity factsheet (28 September 2026)](https://digital-markets-act.ec.europa.eu/factsheet-how-dma-ensures-businesses-using-bookingcom-are-free-set-their-prices-and-bookingcom-2026-09-28_en)
 - [European Commission – Digital Markets Act](https://digital-markets-act.ec.europa.eu/index_en)
-- [Booking.com Partner Hub](https://partner.booking.com/)
 
 This article provides general business information, not legal advice. Accommodation providers should verify their current OTA agreements and applicable local regulations before changing public pricing.
 
